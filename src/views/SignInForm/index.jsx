@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import SignInForm from "../../modules/Auth/components/SignInForm";
-import Header from "../../modules/Global/Header"
+import Header from "../../modules/Global/Header";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -17,7 +17,6 @@ const SignInView = () => {
       <Header />
       <SignInForm />
     </Container>
-    
   );
 };
 

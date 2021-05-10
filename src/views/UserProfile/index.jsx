@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const UserCardView = () => {
   const classes = useStyles();
 

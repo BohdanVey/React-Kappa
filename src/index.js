@@ -7,19 +7,16 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import UserCardView from "./views/UserProfile";
 import ExpedCardView from "./views/ExpedProfile";
 
-
-import Explore from './views/Explore'
-import Main from './views/Main/Main'
-import Expedition from "./views/Expedition";
-import reportWebVitals from './reportWebVitals';
+import Explore from "./views/Explore/Explore";
+import Main from "./views/Main/Main";
+import Expedition from "./views/Expedition/Expedition";
+import reportWebVitals from "./reportWebVitals";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    // Link
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link
 } from "react-router-dom";
-
-
 
 const theme = createMuiTheme({
   palette: {
@@ -37,15 +34,15 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <Router>
         <Switch>
-            <Route path='/main'>
-                <Main />
-            </Route>
-            <Route path='/explore'>
-                <Explore />
-            </Route>
-            <Route path='/expedition'>
-                <Expedition />
-            </Route>
+          <Route path="/main">
+            <Main />
+          </Route>
+          <Route path="/explore">
+            <Explore />
+          </Route>
+          <Route path="/expedition">
+            <Expedition />
+          </Route>
 
           <Route path="/logIn">
             <LogInView />
