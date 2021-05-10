@@ -1,17 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import LogInView from "./views/LogInForm";
+import SignInView from "./views/SignInForm";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import UserCardView from "./views/UserProfile";
+import ExpedCardView from "./views/ExpedProfile";
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#000000",
+    },
+    secondary: {
+      main: "#ffffff",
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route path="/logIn">
+            <LogInView />
+          </Route>
+          <Route path="/signIn">
+            <SignInView />
+          </Route>
+          <Route path="/user">
+            <UserCardView />
+          </Route>
+          <Route path="/exped">
+            <ExpedCardView />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
