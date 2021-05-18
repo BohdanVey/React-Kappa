@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { authContext } from "../../../../context"
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link,
+  Redirect,
+  useLocation,
+  useHistory
+} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -26,8 +36,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function LogIn() {
+export default function LogInForm() {
   const classes = useStyles();
+  const fakeauth = useContext(authContext);
+  const [
+    redirectToReferrer,
+    setRedirectToReferrer
+  ] = useState(false)
+
+  const { state } = useLocation()
+  
+  // console.log("hhhh: " + state);
+
+
+  const login = () => fakeauth.authenticate(() => {
+    console.log("login fire")
+    setRedirectToReferrer(true)
+  })
+
+  if (redirectToReferrer === true) {
+    console.log("redirect")
+    return <Redirect to={state?.from || '/'} />
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -35,7 +65,11 @@ export default function LogIn() {
         <Typography component="h1" variant="h4">
           Log in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={(e) => {
+          login()
+          console.log("login button")
+          e.preventDefault();
+        }} noValidate>
           <TextField
             variant="filled"
             margin="normal"
@@ -63,6 +97,7 @@ export default function LogIn() {
             variant="contained"
             color= "primary"
             className={classes.submit}
+            
           >
             Log In
           </Button>

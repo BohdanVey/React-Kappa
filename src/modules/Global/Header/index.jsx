@@ -5,7 +5,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import logo from "../../../media/photo.jpg";
-
+import {
+  Link,
+} from "react-router-dom";
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -32,9 +34,9 @@ export function Header() {
     <div className={classes.root}>
       <AppBar>
         <Toolbar>
-          <a>
+          <Link to="/main">
             <img src={logo} alt="Kitty Katty!" className={classes.logo} />
-          </a>
+          </Link>
           <Typography variant="h6" className={classes.title}></Typography>
 
           <Button color="inherit">Log in</Button>
