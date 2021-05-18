@@ -1,7 +1,9 @@
 import React, {useState} from "react"
 import {Grid} from "@material-ui/core"
 import ExpeditionCard from "../ExpeditionCard"
+import ExpeditionForm from "../../Add/components/ExpeditionForm"
 import Button from "@material-ui/core/Button";
+
 const initState = [
     {
         id: 1,
@@ -39,23 +41,24 @@ const initState = [
 const ContentExpedition = () => {
     const [items, updateItems] = useState(initState);
 
-    const AddExpedition = () => {
+    const addExpedition = (props) => {
         updateItems([
             ...items,
             {
                 id: items.length + 1,
-                title: "1",
-                date: "2",
+                title: props.title,
+                date: props.date,
             },
         ]);
+        console.log("test")
     };
-    return (<div><Grid container spacing={1}>
-            {items.map((item) => <ExpeditionCard title={item.title} date={item.date}/>)}
-        </Grid>
+    return (
+        <div>
+            <Grid container spacing={1}>
+                {items.map((item) => <ExpeditionCard title={item.title} date={item.date}/>)}
+            </Grid>
             <div>
-                <Button onClick={AddExpedition}>
-                    Add Expedition
-                </Button>
+            <ExpeditionForm addExpedition={addExpedition}/>
             </div>
         </div>
     )

@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import {Grid} from "@material-ui/core"
 import ExploreCard from "../ExploreCard"
 import Button from "@material-ui/core/Button";
+import ExploreForm from "../../Add/components/ExploreForm"
 
 const initState = [
     {
@@ -35,22 +36,23 @@ const initState = [
 const ContentExplore = () => {
     const [items, updateItems] = useState(initState);
 
-    const AddExplore = () => {
+    const addExplore = (props) => {
         updateItems([
             ...items,
             {
                 id: items.length + 1,
-                title: items.length + 1,
+                title: props.title,
             },
         ]);
+        console.log("test")
     };
-    return (<div><Grid container spacing={1}>
-            {items.map((item) => <ExploreCard title={item.title}/>)}
-        </Grid>
+    return (
+        <div>
+            <Grid container spacing={1}>
+                {items.map((item) => <ExploreCard title={item.title} date={item.date}/>)}
+            </Grid>
             <div>
-                <Button onClick={AddExplore}>
-                    Add Explore
-                </Button>
+                <ExploreForm addExplore={addExplore}/>
             </div>
         </div>
     )
