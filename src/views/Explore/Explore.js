@@ -1,37 +1,19 @@
 import "../styles.css";
 import Header from "../../modules/Global/Header";
-
+import {Button, Box, Grid} from "@material-ui/core";
+import ContentExplore from "../../modules/Content/Explore"
 function Explore() {
-  const elements = [
-    "One",
-    "Two",
-    "Three",
-    "Four",
-    "Five",
-    "Six",
-    "Seven",
-    "Eighth",
-    "Nine",
-    "Ten",
-  ];
-  const items = [];
+    return (
+        <div>
+            <Header/>
+            <div className="content">
+                <div className="header">Explore</div>
 
-  for (let i = 0; i < elements.length; i++) {
-    items.push(
-      <div className="sub-content" href="/">
-        <a className="search-text">{elements[i]}</a>
-      </div>
+                    <ContentExplore/>
+            </div>
+
+        </div>
     );
-  }
-  return (
-    <div>
-      <Header />
-      <div className="content">
-        <div className="header">Explore</div>
-        {items}
-      </div>
-    </div>
-  );
 }
 
 export default Explore;

@@ -1,0 +1,47 @@
+Index: src/views/Main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import logo from \"../logo.svg\";\r\nimport './styles.css';\r\nimport {Button, Box} from '@material-ui/core';\r\nimport Header from \"./Header\";\r\nimport background from \"../img/mars.jpg\";\r\n\r\nfunction Main() {\r\n    return (\r\n        <div>\r\n            <Header></Header>\r\n            <div className=\"main-content\" style={{\r\n                backgroundImage: `url(${'mars.jpg'})`\r\n            }}>\r\n                <Box className=\"main-icon main-explore\" color=\"grey\">\r\n                    <p className='main-text'>Explore</p>\r\n                </Box>\r\n                <Box className=\"main-icon main-search\" color=\"grey\">\r\n                    <p className='main-text'>Expeditions</p>\r\n                </Box>\r\n                <Box className=\"main-icon main-profile\" color=\"grey\">\r\n                    <p className='main-text'>Profile</p>\r\n                </Box>\r\n            </div>\r\n        </div>\r\n\r\n    );\r\n}\r\n\r\nexport default Main
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/views/Main.js b/src/views/Main.js
+--- a/src/views/Main.js	(revision a22221d2720d7c1195421156b2cda51c0e21873d)
++++ b/src/views/Main.js	(date 1621328320671)
+@@ -11,15 +11,20 @@
+             <div className="main-content" style={{
+                 backgroundImage: `url(${'mars.jpg'})`
+             }}>
++                <a href='/explore'>
+                 <Box className="main-icon main-explore" color="grey">
+                     <p className='main-text'>Explore</p>
+                 </Box>
++                </a>
++                <a href='/expedition'>
+                 <Box className="main-icon main-search" color="grey">
+                     <p className='main-text'>Expeditions</p>
+                 </Box>
++                </a>
+                 <Box className="main-icon main-profile" color="grey">
+                     <p className='main-text'>Profile</p>
+                 </Box>
++
+             </div>
+         </div>
+ 
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package-lock.json b/package-lock.json
+--- a/package-lock.json	(revision a22221d2720d7c1195421156b2cda51c0e21873d)
++++ b/package-lock.json	(date 1621327937120)
+@@ -5,6 +5,7 @@
+   "requires": true,
+   "packages": {
+     "": {
++      "name": "untitled",
+       "version": "0.1.0",
+       "dependencies": {
+         "@material-ui/core": "^4.11.4",

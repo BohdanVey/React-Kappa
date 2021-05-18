@@ -11,6 +11,7 @@ import Explore from "./views/Explore/Explore";
 import Main from "./views/Main/Main";
 import Expedition from "./views/Expedition/Expedition";
 import reportWebVitals from "./reportWebVitals";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -43,7 +44,6 @@ ReactDOM.render(
           <Route path="/expedition">
             <Expedition />
           </Route>
-
           <Route path="/logIn">
             <LogInView />
           </Route>
