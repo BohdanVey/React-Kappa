@@ -9,13 +9,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserCardView = () => {
+const UserCardView = (props) => {
   const classes = useStyles();
+
 
   return (
     <Container className={classes.container} maxWidth="xs">
       <Header />
-      <UserCard />
+      <UserCard userProfile={props.userProfile}/>
     </Container>
   );
 };
