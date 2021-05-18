@@ -1,110 +1,100 @@
 .header-login-signin {
-    position: relative;
-    float: right;
+  position: relative;
+  float: right;
 }
-.header-login-signin-p{
-
-    margin-top: 1.1vh;
-    margin-right: 20px;
+.header-login-signin-p {
+  margin-top: 1.1vh;
+  margin-right: 20px;
 }
-.App-header{
-    background-color: bisque;
-    min-height: 5vh;
+.App-header {
+  background-color: bisque;
+  min-height: 5vh;
 }
-body{
-    background-image: url("../img/mars.jpg");
-}
+/* body{
+    background-image: url("../media/mars.jpg");
+} */
 a {
-    text-decoration: none;
-    color: #282c34;
-
-
+  text-decoration: none;
+  color: #282c34;
 }
-.icon{
-    position: relative;
-    float: left;
-    max-height: 5vh;
-    margin-left: 10px;
+.icon {
+  position: relative;
+  float: left;
+  max-height: 5vh;
+  margin-left: 10px;
 }
 
 .logo {
-    max-height: 5vh;
+  max-height: 5vh;
 }
 
-.main-content{
-    position: absolute;
-    height: 80%;
-    width: 100%;
+.main-content {
+  position: absolute;
+  height: 80%;
+  width: 100%;
 }
-.main-explore{
-    left:20%;
-    background-image: url(../img/space.png);
-
+.main-explore {
+  left: 20%;
+  background-image: url(../media/space.png);
 }
-.main-search{
-
-    left:45%;
-    background-image: url(../img/search.jpg);
-
+.main-search {
+  left: 45%;
+  background-image: url(../media/search.jpg);
 }
 .main-profile {
-
-    left:70%;
-    background-image: url(../img/profile.png);
-
+  left: 70%;
+  background-image: url(../media/profile.png);
 }
 
-.main-icon{
-    position: absolute;
-    top:25%;
-    height: 500px;
-    width:15%;
-    opacity:60%;
-
+.main-icon {
+  position: absolute;
+  top: 25%;
+  height: 500px;
+  width: 15%;
+  opacity: 60%;
 }
-.main-text{
-    color: #61dafb;
-    text-align: center;
-    font-size:32px;
+.main-text {
+  color: #61dafb;
+  text-align: center;
+  font-size: 32px;
 }
-.main-icon:hover{
-    opacity: 100%;
+.main-icon:hover {
+  opacity: 100%;
 }
-.header{
-    font-size: 60px;
-    color: cornsilk;
-    opacity: 70%;
+.header {
+  font-size: 60px;
+  color: cornsilk;
+  opacity: 70%;
 }
-.content{
-    position: absolute;
-    top:15%;
-    margin-left: 10%;
-    width:80%;
-    min-height: 60vh;
+.content {
+  position: absolute;
+  top: 15%;
+  margin-left: 10%;
+  width: 80%;
+  min-height: 60vh;
 }
-.sub-content{
-    height: 5.5vh;
-    background-color: cornsilk;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #282c34;
-    opacity: 70%;
+.sub-content {
+  height: 5.5vh;
+  background-color: cornsilk;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #282c34;
+  opacity: 70%;
 }
 
 .search-text {
-    position: relative;
-    float:left;
-    margin-left: 15px;
-    font-size: 30px;
-    margin-top: 4px;
-    max-height: 5.5vh;
-    margin-bottom: 0;
+  position: relative;
+  float: left;
+  margin-left: 15px;
+  font-size: 30px;
+  margin-top: 4px;
+  max-height: 5.5vh;
+  margin-bottom: 0;
 }
-.right-data{
-    position: relative;
-    float: right;
-    font-size:20px;
-    margin-top: 10px;
-    margin-right: 20px;
+.right-data {
+  position: relative;
+  float: right;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
 }
-

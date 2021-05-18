@@ -1,0 +1,99 @@
+import styles from "./styles.module.css";
+import Button from "@material-ui/core/Button";
+
+const ExpedCard = () => {
+  // const history = useHistory();
+
+  // const loginHandler = () => {
+  //   history.replace("/app");
+  // };
+
+  return (
+    <div className={styles.wrapper}>
+      <div claclassNamess={styles.left}>
+        <img
+          src="https://www.universetoday.com/wp-content/uploads/2010/01/Apollo-11-Crew-Photo1.jpg"
+          alt="user"
+          width="500"
+        ></img>
+        {/* <img src="./logo192.jpg" alt="user" width="400" /> */}
+        <div className={styles.underImageText}>
+          <h4>Team name</h4>
+        </div>
+      </div>
+      <div className={styles.right}>
+        <div className={styles.info}>
+          <h3>Destination</h3>
+          <div className={styles.info_data}>
+            <div className={styles.data}>
+              <h4>From</h4>
+              <p>Earth</p>
+            </div>
+            <div className={styles.data}>
+              <h4>To</h4>
+              <p>Mars</p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.projects}>
+          <h3>Team</h3>
+          <div className={styles.projects_data}>
+            <div className={styles.data}>
+              <h4>Astronaut 1</h4>
+              <p>
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+              </p>
+            </div>
+            <div className={styles.data}>
+              <h4>Astronaut 2</h4>
+              <p>
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+              </p>
+            </div>
+          </div>
+          <div>
+            <h3>About</h3>
+            <div className={styles.data}>
+              <p>
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+                ....................................
+              </p>
+            </div>
+          </div>
+        </div>
+        <Button variant="contained" color="primary">
+          Join
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default ExpedCard;
