@@ -54,29 +54,29 @@ const userProfile = {
   ]
 }
 
-function Login(fakeAuth) {
-    const [
-      redirectToReferrer,
-      setRedirectToReferrer
-    ] = useState(false)
+// function Login(fakeAuth) {
+//     const [
+//       redirectToReferrer,
+//       setRedirectToReferrer
+//     ] = useState(false)
   
-    const { state } = useLocation()
+//     const { state } = useLocation()
   
-    const login = () => fakeAuth.authenticate(() => {
-      setRedirectToReferrer(true)
-    })
+//     const login = () => fakeAuth.authenticate(() => {
+//       setRedirectToReferrer(true)
+//     })
 
-    if (redirectToReferrer === true) {
-      return <Redirect to={state?.from || '/'} />
-    }
+//     if (redirectToReferrer === true) {
+//       return <Redirect to={state?.from || '/'} />
+//     }
 
-    return (
-      <div>
-        <p>You must log in to view the page</p>
-        <button onClick={login}>Log in</button>
-      </div>
-    )
-  }
+//     return (
+//       <div>
+//         <p>You must log in to view the page</p>
+//         <button onClick={login}>Log in</button>
+//       </div>
+//     )
+//   }
 
 
 
@@ -97,9 +97,8 @@ const Routes = () => {
             }} />
             )
         }
-        
+
     const fakeAuth = {
-        
         authenticate(cb) {
           // implement identity check  
           console.log('auth try')

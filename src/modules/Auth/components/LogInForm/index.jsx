@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LogInForm() {
   const classes = useStyles();
+
   const fakeauth = useContext(authContext);
+  
   const [
     redirectToReferrer,
     setRedirectToReferrer
@@ -46,8 +48,6 @@ export default function LogInForm() {
 
   const { state } = useLocation()
   
-  // console.log("hhhh: " + state);
-
 
   const login = () => fakeauth.authenticate(() => {
     console.log("login fire")
