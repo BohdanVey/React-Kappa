@@ -9,7 +9,6 @@ const UserCard = () => {
 
   const props = useSelector((state) => state.userInfo[currUser.currUserId - 1])
 
-  // console.log(props);
 
   return (
     <div className={styles.wrapper}>

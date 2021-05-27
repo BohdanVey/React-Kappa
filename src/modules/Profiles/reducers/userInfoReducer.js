@@ -96,6 +96,9 @@ const userInfoReducer = (state = initialState, action) => {
             },
         ];
 
+    case updateUserInfoAction:
+        
+
     default:
       return state;
   }
