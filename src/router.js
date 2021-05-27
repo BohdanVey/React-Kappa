@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { createMuiTheme, ThemeProvider, unstable_createMuiStrictModeTheme } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -20,6 +20,7 @@ import ExpedCardView from "./views/ExpedProfile";
 import Explore from "./views/Explore/Explore";
 import Main from "./views/Main/Main";
 import Expedition from "./views/Expedition/Expedition";
+import Content from "./views/TestTest/";
 
 
 import rootReducer from "./rootReducer";
@@ -37,12 +38,8 @@ const theme = createMuiTheme({
   },
 });
 
-
-
       
 const store = createStore(rootReducer);
-
-
         
 const Routes = () => {
 
@@ -64,37 +61,41 @@ const Routes = () => {
     return(
         <React.StrictMode>
           <Provider store={store}>
-          <ThemeProvider theme={theme}>
-          <Router>
-              <Switch>
-              <Route path="/main">
-                  <Main />
-              </Route>
-              <Route path="/explore">
-                  <Explore />
-              </Route>
-              <Route path="/expedition">
-                  <Expedition />
-              </Route>
-              <Route path="/logIn">
-                  <LogInView />
-              </Route>
-              <Route path="/signUp">
-                  <SignUpView />
-              </Route>
-              <PrivateRoute path="/user/:id">
-                  <UserCardView userProfile={userProfile}/>
-              </PrivateRoute>
-              <Route path="/exped">
-                  <ExpedCardView />
-              </Route>
+            <ThemeProvider theme={theme}>
+              <Router>
+                  <Switch>
+                  <Route path="/main">
+                      <Main />
+                  </Route>
+                  <Route path="/explore">
+                      <Explore />
+                  </Route>
+                  <Route path="/expedition">
+                      <Expedition />
+                  </Route>
+                  <Route path="/logIn">
+                      <LogInView />
+                  </Route>
+                  <Route path="/signUp">
+                      <SignUpView />
+                  </Route>
+                  <PrivateRoute path="/user/:id">
+                      <UserCardView />
+                  </PrivateRoute>
+                  <Route path="/exped">
+                      <ExpedCardView />
+                  </Route>
+                  <Route path="/exped">
+                      <ExpedCardView />
+                  </Route>
+                  <Route path="/test">
+                      <Content />
+                  </Route>
 
-              <Route path="/exped">
-                  <ExpedCardView />
-              </Route>
-              </Switch>
-          </Router>
-          </ThemeProvider>
+                  </Switch>
+              </Router>
+
+            </ThemeProvider>
           </Provider>
         </React.StrictMode>
   );

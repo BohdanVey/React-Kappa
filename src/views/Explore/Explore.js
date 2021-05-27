@@ -7,9 +7,7 @@ function Explore() {
         <div>
             <Header/>
             <div className="content">
-                <div className="header">Explore</div>
-
-                    <ContentExplore/>
+                <ContentExplore/>
             </div>
 
         </div>
