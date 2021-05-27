@@ -1,6 +1,6 @@
 import "./index.css";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,7 +21,6 @@ import Explore from "./views/Explore/Explore";
 import Main from "./views/Main/Main";
 import Expedition from "./views/Expedition/Expedition";
 
-import { authContext } from "./context"
 
 import rootReducer from "./rootReducer";
 import { useSelector } from "react-redux";
@@ -69,9 +68,6 @@ const Routes = () => {
 
     function PrivateRoute({ children, ...rest }) {
         const logInInfo = useSelector((state) => state.currUser)
-        console.log("PrivateRoute fire")
-        console.log(logInInfo)
-        console.log("PrivateRoute fire")
 
         return (
             <Route {...rest} render={({ location }) => {
@@ -91,9 +87,9 @@ const Routes = () => {
           <ThemeProvider theme={theme}>
           <Router>
               <Switch>
-              <PrivateRoute path="/main">
+              <Route path="/main">
                   <Main />
-              </PrivateRoute>
+              </Route>
               <Route path="/explore">
                   <Explore />
               </Route>
@@ -101,9 +97,7 @@ const Routes = () => {
                   <Expedition />
               </Route>
               <Route path="/logIn">
-                  {/* <authContext.Provider value={fakeAuth}> */}
-                      <LogInView />
-                  {/* </authContext.Provider> */}
+                  <LogInView />
               </Route>
               <Route path="/signUp">
                   <SignUpView />

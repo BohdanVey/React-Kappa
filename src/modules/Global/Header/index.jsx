@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) =>
       maxWidth: 40,
       marginRight: "10px",
     },
+
+    authLink: {
+      marginRight: "20px",
+    },
   })
 );
 
@@ -39,19 +43,6 @@ export function Header() {
   const classes = useStyles();
 
   const logInInfo = useSelector((state) => state.currUser)
-
-  // const logged = loggedIn;
-  // console.log(logInInfo);
-  // console.log(logInInfo);
-  // console.log(logInInfo);
-  // console.log(logInInfo);
-  // console.log(logInInfo);
-  // console.log(logInInfo);
-  // console.log(logInInfo);
-  // console.log(logInInfo);
-  // console.log(loggedIn);
-  // console.log(loggedIn);
-  // console.log(loggedIn);
 
   return (
     <div className={classes.root}>
@@ -62,17 +53,24 @@ export function Header() {
           </Link>
           <Typography variant="h6" className={classes.title}></Typography>
 
-          <a to="/main">Log in</a>
-          <Button color="inherit">Sign up</Button>
+          <Link to="/login" className={classes.authLink}>
+          <Typography color="secondary" >Log in</Typography>
+          </Link>
+
+          <Typography color="secondary"></Typography>
+
+          <Link to="/signup" className={classes.authLink}>
+            <Typography color="secondary" >Sign Up</Typography>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-// Header.propTypes = {
-//   loggedIn: PropTypes.bool.isRequired,
-// };
+Header.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+};
 
 // const mapStateToProps = (state) => ({
 //   loggedIn: state.currUser.loggedIn,

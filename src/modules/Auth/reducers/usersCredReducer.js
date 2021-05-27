@@ -1,4 +1,4 @@
-import { checkUserCredAction, addUserCredAction } from "../actions/actionTypes";
+import { addUserCredAction } from "../actions/actionTypes";
 
 const initialState = [
     {
@@ -21,21 +21,15 @@ const initialState = [
 
 const userCredReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case checkUserCredAction:
-    //     console.log("checkUserCredAction fire")
-    //     let i = 0;
-    //     while (i < state.length) {
-    //         // if (action.payload.email === state[i].email) {
-    //         //     return state[i].usedId;
-    //         // }
-    //         console.log(i);
-    //         i++;
-    //     } 
-    //     console.log("checkUserCredAction fire")
-
-    //     return 1;
 
     case addUserCredAction:
+
+        console.log({
+            userId: state.length + 1,
+            email: action.payload.email,
+            password: action.payload.password,
+        });
+        
         return [
             ...state,
             {
