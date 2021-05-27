@@ -16,7 +16,7 @@ import { addUserCredAction } from "../../actions/actionTypes";
 
 import { useDispatch } from "react-redux";
 
-import PropTypes from "prop-types";
+import { addUserInfoAction } from "../../../Profiles/actions/actionTypes"
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -52,7 +52,10 @@ function SignUpForm() {
   const { handleSubmit, control } = useForm();
 
   const onSubmit = data => {
+  
     dispatch({type:addUserCredAction, payload: data})
+    dispatch({type:addUserInfoAction, payload: data})
+
     setRedirectToReferrer(true)
 
   };

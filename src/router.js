@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { createMuiTheme, ThemeProvider, unstable_createMuiStrictModeTheme } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -20,6 +20,7 @@ import ExpedCardView from "./views/ExpedProfile";
 import Explore from "./views/Explore/Explore";
 import Main from "./views/Main/Main";
 import Expedition from "./views/Expedition/Expedition";
+import Content from "./views/TestTest/";
 
 
 import rootReducer from "./rootReducer";
@@ -108,12 +109,16 @@ const Routes = () => {
               <Route path="/exped">
                   <ExpedCardView />
               </Route>
-
               <Route path="/exped">
                   <ExpedCardView />
               </Route>
+              <Route path="/test">
+                  <Content />
+              </Route>
+
               </Switch>
           </Router>
+
           </ThemeProvider>
           </Provider>
         </React.StrictMode>

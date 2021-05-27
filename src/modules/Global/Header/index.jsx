@@ -13,7 +13,7 @@ import Button from "@material-ui/core/Button";
 
 
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) =>

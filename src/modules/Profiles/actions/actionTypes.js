@@ -1,0 +1,1 @@
+export const addUserInfoAction = "ADD_USER_INFO_ACTION";
