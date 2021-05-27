@@ -6,8 +6,15 @@ import Header from "../../modules/Global/Header";
 import {
     Link,
   } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Main() {
+    const logInInfo = useSelector((state) => state.currUser)
+    
+    console.log("Main logInInfo fire")
+    console.log(logInInfo)
+    console.log("Main logInInfo fire")
+
     return (
         <div>
             <Header/>
@@ -29,7 +36,7 @@ function Main() {
                         <p className="main-text">Expeditions</p>
                     </Box>
                 </Link>
-                <Link to='/user'>
+                <Link to={"/user/:" + logInInfo.usedId}>
                     <Box className="main-icon main-profile" color="grey">
                         <p className="main-text">Profile</p>
                     </Box>

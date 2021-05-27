@@ -17,8 +17,10 @@ import { useForm, Controller } from "react-hook-form";
 import { authContext } from "../../../../context"
 // import { connect } from "react-redux";
 import { loggedInAction, loggedOutAction } from "../../actions/actionTypes";
+
+import { checkUserCredAction, addUserCredAction } from "../../actions/actionTypes";
+
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 
 
 import PropTypes from "prop-types";
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function LogInForm() {
+function SignUpForm() {
   const classes = useStyles();
   // const fakeauth = useContext(authContext);
   const [
@@ -61,43 +63,26 @@ function LogInForm() {
 
   const { handleSubmit, control } = useForm();
 
-  const userCred = useSelector((state) => state.userCred);
 
   const onSubmit = data => {
     console.log(data);
 
-    console.log("onSubmit fire");
-
-    for (let i=0; i < userCred.length; i++) {
-      if (userCred[i].email === data.email && 
-        userCred[i].password === data.password) {
-          console.log(userCred[i]);
-          dispatch({type:loggedInAction, payload:userCred[i]});          
-          setRedirectToReferrer(true)
-          return;
-        };
-    };
-
-    console.log("onSubmit fire");
-
-
+    dispatch({type:addUserCredAction, payload: data})
+    console.log("signUp button")
+    setRedirectToReferrer(true)
 
   };
 
-
   if (redirectToReferrer === true) {
     console.log("redirect")
-
-
-
-    return <Redirect to={state?.from || '/main'} />
+    return <Redirect to={'/main'} />
   }
 
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h4">
-          Log in
+          Sign up
         </Typography>
 
         <form  className={classes.form} onSubmit={handleSubmit(onSubmit)}>
@@ -147,15 +132,12 @@ function LogInForm() {
             variant="contained"
             color= "primary"            
           >
-            Log In
+            Sign up
           </Button>
       </form>
-          <Link to="/signup" variant="body1" mx="auto">
-            Don't have an account? Sign Up
-          </Link>
       </div>
     </Container>
   );
 }
 
-export default LogInForm;
+export default SignUpForm;

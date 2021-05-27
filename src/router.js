@@ -14,7 +14,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 import LogInView from "./views/LogInForm";
-import SignInView from "./views/SignInForm";
+import SignUpView from "./views/SignUpForm";
 import UserCardView from "./views/UserProfile";
 import ExpedCardView from "./views/ExpedProfile";
 import Explore from "./views/Explore/Explore";
@@ -24,9 +24,7 @@ import Expedition from "./views/Expedition/Expedition";
 import { authContext } from "./context"
 
 import rootReducer from "./rootReducer";
-
-
-
+import { useSelector } from "react-redux";
 
 
 const theme = createMuiTheme({
@@ -68,14 +66,16 @@ const store = createStore(rootReducer);
 
         
 const Routes = () => {
-    const [isAuthenticated, setAuth] = useState(false)
-
-
 
     function PrivateRoute({ children, ...rest }) {
+        const logInInfo = useSelector((state) => state.currUser)
+        console.log("PrivateRoute fire")
+        console.log(logInInfo)
+        console.log("PrivateRoute fire")
+
         return (
             <Route {...rest} render={({ location }) => {
-                return isAuthenticated === true
+                return logInInfo.loggedIn === true
                 ? children
                 : <Redirect to={{
                     pathname: '/login',
@@ -83,22 +83,7 @@ const Routes = () => {
                 }} />
             }} />
             )
-        }
-
-    const fakeAuth = {
-        authenticate(cb) {
-          // implement identity check  
-          console.log('auth try')
-          setAuth(true)
-          setTimeout(cb, 100) // fake async
-          console.log('is auth?  ' + isAuthenticated)
-        },
-    
-        signout(cb) {
-          setAuth(false)
-        }
-    }
-
+        };
     
     return(
         <React.StrictMode>
@@ -116,12 +101,12 @@ const Routes = () => {
                   <Expedition />
               </Route>
               <Route path="/logIn">
-                  <authContext.Provider value={fakeAuth}>
+                  {/* <authContext.Provider value={fakeAuth}> */}
                       <LogInView />
-                  </authContext.Provider>
+                  {/* </authContext.Provider> */}
               </Route>
-              <Route path="/signIn">
-                  <SignInView />
+              <Route path="/signUp">
+                  <SignUpView />
               </Route>
               <PrivateRoute path="/user/:id">
                   <UserCardView userProfile={userProfile}/>

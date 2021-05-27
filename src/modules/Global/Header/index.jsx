@@ -35,20 +35,20 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export function Header({ loggedIn }) {
+export function Header() {
   const classes = useStyles();
 
   const logInInfo = useSelector((state) => state.currUser)
 
-  const logged = loggedIn;
-  console.log(logInInfo);
-  console.log(logInInfo);
-  console.log(logInInfo);
-  console.log(logInInfo);
-  console.log(logInInfo);
-  console.log(logInInfo);
-  console.log(logInInfo);
-  console.log(logInInfo);
+  // const logged = loggedIn;
+  // console.log(logInInfo);
+  // console.log(logInInfo);
+  // console.log(logInInfo);
+  // console.log(logInInfo);
+  // console.log(logInInfo);
+  // console.log(logInInfo);
+  // console.log(logInInfo);
+  // console.log(logInInfo);
   // console.log(loggedIn);
   // console.log(loggedIn);
   // console.log(loggedIn);
@@ -62,7 +62,7 @@ export function Header({ loggedIn }) {
           </Link>
           <Typography variant="h6" className={classes.title}></Typography>
 
-          <Button color="inherit">Log in</Button>
+          <a to="/main">Log in</a>
           <Button color="inherit">Sign up</Button>
         </Toolbar>
       </AppBar>
@@ -70,13 +70,14 @@ export function Header({ loggedIn }) {
   );
 }
 
-Header.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
-};
+// Header.propTypes = {
+//   loggedIn: PropTypes.bool.isRequired,
+// };
 
-const mapStateToProps = (state) => ({
-  loggedIn: state.currUser.loggedIn,
-});
+// const mapStateToProps = (state) => ({
+//   loggedIn: state.currUser.loggedIn,
+// });
 
-export default connect(mapStateToProps)(Header);
+// export default connect(mapStateToProps)(Header);
+export default Header;
 

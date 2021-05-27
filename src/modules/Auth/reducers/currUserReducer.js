@@ -9,9 +9,14 @@ const initialState = {
 const currUserReducer = (state = initialState, action) => {
   switch (action.type) {
     case loggedInAction:
+
+    console.log("currUserReducer loggedInAction fire")
+    console.log(action.payload)
+    console.log("currUserReducer loggedInAction fire")
+
       return {
         loggedIn: true,
-        currUserId: "11111",
+        currUserId: action.payload.userId,
       };
 
     case loggedOutAction:

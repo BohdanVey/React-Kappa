@@ -10,101 +10,137 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Select from "@material-ui/core/Select";
 import FormGroup from "@material-ui/core/FormGroup";
 import Typography from "@material-ui/core/Typography";
-
+import { makeStyles } from '@material-ui/core';
 
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
+
+import {
+    // BrowserRouter,
+    Redirect,
+    useLocation,
+  } from "react-router-dom";
+
 // import { addTodoItem } from "../../actions/actionTypes";
 
 const EditTodo = ({ open, handleClose }) => {
-  const { control, handleSubmit, getValues, errors } = useForm();
-  const dispatch = useDispatch();
+    // const classes = useStyles();
+    const { handleSubmit, control } = useForm();
+    const [
+        redirectToReferrer,
+        setRedirectToReferrer
+    ] = useState(false)
 
-  const onSubmit = () => {
-    // if (!errors) {
-      const values = getValues();
 
-      console.log(values);
-    //   dispatch({ type: addTodoItem, payload: values });
+    const { state } = useLocation()
 
-    //   handleClose();
-    // }
-  };
 
-  return (
+    const onSubmit = data => {
+      console.log(data);
+    //   dispatch({type:loggedInAction})
+      setRedirectToReferrer(true)
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <DialogTitle id="form-dialog-title">Add</DialogTitle>
-        <DialogContent>
-          <Typography component="h1" variant="h4">
-          Log in
-        </Typography>
-          <FormGroup>
-            <Controller
-              name="email"
-              control={control}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                variant="filled"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoFocus
-              />
-              )}
-              rules={{ required: "Email required" }}
+    };
+  
+
+
+    if (redirectToReferrer === true) {
+        console.log("redirect")
+        return <Redirect to={'/main'} />
+        // return <Redirect to={state?.from || '/main'} />
+    }
+
+
+    return (
+      <form  onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="firstName"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="First Name"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              fullWidth
+
             />
-          </FormGroup>
+          )}
+          rules={{ required: 'First name required' }}
+        />
+        <Controller
+          name="lastName"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Last Name"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              fullWidth
 
-          <FormGroup>
-            <Controller
-              name="password"
-              control={control}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                variant="filled"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-              />
-              )}
-              rules={{ required: "Password required" }}
             />
-          </FormGroup>
+          )}
+          rules={{ required: 'Last name required' }}
+        />
+        <Controller
+          name="email"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Email"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              type="email"
+              fullWidth
 
-        </DialogContent>
-        <DialogActions>
+            />
+          )}
+          rules={{ required: 'Email required' }}
+        />
+        <Controller
+          name="password"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Password"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              type="password"
+              fullWidth
 
-          <Button
+            />
+          )}
+          rules={{ required: 'Password required' }}
+        />
+
+        <Button
             type="submit"
             margin="normal"
             fullWidth
             variant="contained"
-            color= "primary"  
+            color= "primary"            
           >
             Log In
           </Button>
-          <Button type="submit" color="primary">
-            Create
-          </Button>
-        </DialogActions>
       </form>
-  );
+    );
 };
 
 EditTodo.propTypes = {

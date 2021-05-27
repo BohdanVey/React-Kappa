@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import SignInForm from "../../modules/Auth/components/SignInForm";
+import SignUpForm from "../../modules/Auth/components/SignUpForm";
 import Header from "../../modules/Global/Header";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,15 +9,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignInView = () => {
+const SignUpView = () => {
   const classes = useStyles();
 
   return (
     <Container className={classes.container} maxWidth="xs">
       <Header />
-      <SignInForm />
+      <SignUpForm />
     </Container>
   );
 };
 
-export default SignInView;
+export default SignUpView;
