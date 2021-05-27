@@ -37,27 +37,7 @@ const theme = createMuiTheme({
   },
 });
 
-const userProfile = {
-  logined: 1,
-  fullName: "Nill Armstrong",
-  userName: "nill_armstrong",
 
-  email: "alex@gmail.com",
-  phone: "+380991234567",
-  about: "A modest simple guy on the mars",
-  imgSource: "https://i.imgur.com/bxgzvrp.jpg",
-  status: "Astronaut",
-  expeditions: [
-    {
-      expeditionName: "First expedition",
-      description: "This is the first expedition of Nill"
-    },
-    {
-      expeditionName: "Second expedition",
-      description: "This is the second expedition of Nill"
-    },
-  ]
-}
 
       
 const store = createStore(rootReducer);
