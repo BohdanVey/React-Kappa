@@ -1,14 +1,20 @@
 import React from "react";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import logo from "../../../media/photo.jpg";
 import {
   Link,
 } from "react-router-dom";
 
+
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+
+
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -29,8 +35,23 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export function Header() {
+export function Header({ loggedIn }) {
   const classes = useStyles();
+
+  const logInInfo = useSelector((state) => state.currUser)
+
+  const logged = loggedIn;
+  console.log(logInInfo);
+  console.log(logInInfo);
+  console.log(logInInfo);
+  console.log(logInInfo);
+  console.log(logInInfo);
+  console.log(logInInfo);
+  console.log(logInInfo);
+  console.log(logInInfo);
+  // console.log(loggedIn);
+  // console.log(loggedIn);
+  // console.log(loggedIn);
 
   return (
     <div className={classes.root}>
@@ -49,4 +70,13 @@ export function Header() {
   );
 }
 
-export default Header;
+Header.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  loggedIn: state.currUser.loggedIn,
+});
+
+export default connect(mapStateToProps)(Header);
+

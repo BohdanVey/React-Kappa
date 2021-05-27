@@ -1,13 +1,13 @@
-import React from "react";
+ import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import ContentExpedition from "../../../Content/Expedition";
+// import ContentExpedition from "../../../Content/Expedition";
 
-import {useHistory} from "react-router-dom";
+// import {useHistory} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ExpeditionSubmit(props) {
     const addExpedition = props.addExpedition;
     const classes = useStyles();
-    const history = useHistory();
+    // const history = useHistory();
     return (
         <Container component="main" maxWidth="xs">
             <div className={classes.paper}>

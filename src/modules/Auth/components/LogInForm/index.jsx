@@ -1,21 +1,24 @@
 import React, { useState, useContext } from "react";
+import {
+  // BrowserRouter,
+  Redirect,
+  useLocation,
+} from "react-router-dom";
+
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { authContext } from "../../../../context"
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  // Link,
-  Redirect,
-  useLocation,
-  useHistory
-} from "react-router-dom";
+import { authContext } from "../../../../context"
+// import { connect } from "react-redux";
+import { loggedInAction, loggedOutAction } from "../../actions/actionTypes";
+import { useDispatch } from "react-redux";
+
+
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,27 +39,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function LogInForm() {
+function LogInForm() {
   const classes = useStyles();
-
   const fakeauth = useContext(authContext);
-  
   const [
     redirectToReferrer,
     setRedirectToReferrer
   ] = useState(false)
-
   const { state } = useLocation()
-  
-
+  const dispatch = useDispatch(); 
+ 
   const login = () => fakeauth.authenticate(() => {
     console.log("login fire")
+    dispatch({type:loggedInAction})
     setRedirectToReferrer(true)
   })
 
   if (redirectToReferrer === true) {
     console.log("redirect")
-    return <Redirect to={state?.from || '/'} />
+    return <Redirect to={state?.from || '/main'} />
   }
 
   return (
@@ -109,3 +110,5 @@ export default function LogInForm() {
     </Container>
   );
 }
+
+export default LogInForm;

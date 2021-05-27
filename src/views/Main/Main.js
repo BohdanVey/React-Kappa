@@ -1,7 +1,7 @@
-import logo from "../../logo.svg";
+// import logo from "../../logo.svg";
 import "../styles.css";
-import {Button, Box} from "@material-ui/core";
-import background from "../../media/mars.jpg";
+import { Box} from "@material-ui/core";
+// import background from "../../media/mars.jpg";
 import Header from "../../modules/Global/Header";
 import {
     Link,
