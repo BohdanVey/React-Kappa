@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../../media/photo.jpg";
 import {
+  Redirect,
   Link,
 } from "react-router-dom";
 
@@ -14,7 +15,8 @@ import Button from "@material-ui/core/Button";
 
 import PropTypes from "prop-types";
 // import { connect } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { loggedOutAction } from "../../Auth/actions/actionTypes";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -44,6 +46,21 @@ export function Header() {
 
   const logInInfo = useSelector((state) => state.currUser)
 
+  const dispatch = useDispatch();
+
+  let condPart1;
+  let condPart2;
+
+  if (logInInfo.loggedIn === false) {      
+    condPart1 =  <Link to="/login" className={classes.authLink}><Typography color="secondary" >Log in</Typography></Link>;
+    condPart2 = <Link to="/signup" className={classes.authLink}><Typography color="secondary" >Sign Up</Typography></Link>;
+  
+  } else {
+    condPart1 = <Link to={"/user/:" + logInInfo.currUserId} className={classes.authLink}><Typography color="secondary" >Profile</Typography></Link>;
+    condPart2 = <Button color="secondary" onClick={() => { dispatch({type:loggedOutAction}) }}>Log Out</Button>;
+  }
+
+
   return (
     <div className={classes.root}>
       <AppBar>
@@ -52,16 +69,9 @@ export function Header() {
             <img src={logo} alt="Kitty Katty!" className={classes.logo} />
           </Link>
           <Typography variant="h6" className={classes.title}></Typography>
+          {condPart1}
+          {condPart2}
 
-          <Link to="/login" className={classes.authLink}>
-          <Typography color="secondary" >Log in</Typography>
-          </Link>
-
-          <Typography color="secondary"></Typography>
-
-          <Link to="/signup" className={classes.authLink}>
-            <Typography color="secondary" >Sign Up</Typography>
-          </Link>
         </Toolbar>
       </AppBar>
     </div>
