@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Redirect,
   useLocation,
@@ -54,6 +54,19 @@ function LogInForm() {
 
   const userCred = useSelector((state) => state.userCred);
 
+
+  useEffect(() => {
+    fetch('http://localhost:8000/creds')
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+
+        //тут свій код
+        console.log(data)
+      })
+  }, []);
+
   const onSubmit = data => {
     for (let i=0; i < userCred.length; i++) {
       if (userCred[i].email === data.email && 
@@ -70,6 +83,10 @@ function LogInForm() {
     console.log("redirect")
     return <Redirect to={state?.from || '/main'} />
   }
+
+
+
+
 
   return (
     <Container component="main" maxWidth="xs">

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 
 
-import styles from "./styles.module.css";
+import styles from "./../styles.module.css";
 import { useSelector } from "react-redux";
 import UserUpdate from "../UserUpdate"
 
@@ -16,9 +16,6 @@ const UserCard = () => {
 
   const [open, setOpen] = useState(false);
 
-  // const handleClick = () => {
-  //   console.log("Clicked!!");
-  // }
 
   const handleClickOpen = () => {
     setOpen(true);
