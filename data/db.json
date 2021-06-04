@@ -1,0 +1,90 @@
+{
+  "creds": [
+    {
+      "id": 1,
+      "email": "1@1.com",
+      "password": "111"
+    },
+    {
+      "id": 2,
+      "email": "TWO@2.com",
+      "password": "222"
+    },
+    {
+      "id": 3,
+      "email": "3@3.com",
+      "password": "333"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userProfile": {
+        "fullName": "Nill Armstrong",
+        "userName": "nill_armstrong",
+        "email": "1@1.1",
+        "phone": "+380991234567",
+        "about": "A modest simple guy on the mars",
+        "imgSource": "https://i.imgur.com/bxgzvrp.jpg",
+        "status": "Astronaut",
+        "expeditions": [
+          {
+            "expeditionName": "First expedition",
+            "description": "This is the first expedition of Nill"
+          },
+          {
+            "expeditionName": "Second expedition",
+            "description": "This is the second expedition of Nill"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "userProfile": {
+        "fullName": "222",
+        "userName": "222",
+        "email": "2@2.com",
+        "phone": "+380991234567",
+        "about": "A modest simple guy on the mars",
+        "imgSource": "https://i.imgur.com/bxgzvrp.jpg",
+        "status": "Astronaut",
+        "expeditions": [
+          {
+            "expeditionName": "First expedition",
+            "description": "This is the first expedition of N22ill"
+          },
+          {
+            "expeditionName": "Second expedition",
+            "description": "This is the second expedition of 22"
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "userProfile": {
+        "fullName": "333",
+        "userName": "333",
+        "email": "3@3.com",
+        "phone": "+380991234567",
+        "about": "A modest simple guy on the mars",
+        "imgSource": "https://i.imgur.com/bxgzvrp.jpg",
+        "status": "Astronaut",
+        "expeditions": [
+          {
+            "expeditionName": "First expedition",
+            "description": "This is the first expedition of 333"
+          },
+          {
+            "expeditionName": "Second expedition",
+            "description": "This is the second expedition of 333"
+          }
+        ]
+      }
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

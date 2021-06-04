@@ -10,7 +10,6 @@ function Expedition() {
         <div>
             <Header/>
             <div className="content">
-                <div className="header">Expedition</div>
                 <ContentExpedition/>
             </div>
         </div>

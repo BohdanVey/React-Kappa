@@ -1,21 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import {
+  Redirect,
+  useLocation,
+} from "react-router-dom";
+
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { authContext } from "../../../../context"
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  // Link,
-  Redirect,
-  useLocation,
-  useHistory
-} from "react-router-dom";
+import { useForm, Controller } from "react-hook-form";
+
+import { loggedInAction } from "../../actions/actionTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,28 +35,58 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function LogInForm() {
+
+function LogInForm() {
   const classes = useStyles();
-  const fakeauth = useContext(authContext);
+
   const [
     redirectToReferrer,
     setRedirectToReferrer
   ] = useState(false)
 
   const { state } = useLocation()
-  
-  // console.log("hhhh: " + state);
+
+  const dispatch = useDispatch(); 
+ 
+  const { handleSubmit, control } = useForm();
+
+  const [logInFail, setLogInFail] = useState(false);
+
+  const userCred = useSelector((state) => state.userCred);
 
 
-  const login = () => fakeauth.authenticate(() => {
-    console.log("login fire")
-    setRedirectToReferrer(true)
-  })
+  useEffect(() => {
+    fetch('http://localhost:8000/creds')
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+
+        //тут свій код
+        console.log(data)
+      })
+  }, []);
+
+  const onSubmit = data => {
+    for (let i=0; i < userCred.length; i++) {
+      if (userCred[i].email === data.email && 
+        userCred[i].password === data.password) {
+          dispatch({type:loggedInAction, payload:userCred[i]});          
+          setRedirectToReferrer(true)
+          return;
+        };
+    };
+    setLogInFail(true);
+  };
 
   if (redirectToReferrer === true) {
     console.log("redirect")
-    return <Redirect to={state?.from || '/'} />
+    return <Redirect to={state?.from || '/main'} />
   }
+
+
+
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -65,47 +94,60 @@ export default function LogInForm() {
         <Typography component="h1" variant="h4">
           Log in
         </Typography>
-        <form className={classes.form} onSubmit={(e) => {
-          login()
-          console.log("login button")
-          e.preventDefault();
-        }} noValidate>
-          <TextField
-            variant="filled"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoFocus
-          />
-          <TextField
-            variant="filled"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-          />
-          <Button
+        <form  className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="email"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Email"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              type="email"
+              fullWidth
+            />
+          )}
+          rules={{ required: 'Email required' }}
+        />
+        <Controller
+          name="password"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              label="Password"
+              variant="filled"
+              value={value}
+              onChange={onChange}
+              error={!!error}
+              helperText={error ? error.message : null}
+              type="password"
+              fullWidth
+            />
+          )}
+          rules={{ required: 'Password required' }}
+        />
+        {logInFail        
+          ? <Alert severity="error">Email or password is incorrect</Alert>
+          : <p></p>
+        }
+        <Button
             type="submit"
             margin="normal"
             fullWidth
             variant="contained"
-            color= "primary"
-            className={classes.submit}
-            
+            color= "primary"            
           >
             Log In
           </Button>
-          <Link href="#" variant="body1" mx="auto">
-            {"Don't have an account? Sign Up"}
-          </Link>
-        </form>
+      </form>
       </div>
     </Container>
   );
 }
+
+export default LogInForm;

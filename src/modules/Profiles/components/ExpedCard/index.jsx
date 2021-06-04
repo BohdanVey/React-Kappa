@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./../styles.module.css";
 import Button from "@material-ui/core/Button";
 
 const ExpedCard = () => {

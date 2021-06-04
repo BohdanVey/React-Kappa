@@ -1,12 +1,13 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-import {useHistory} from "react-router-dom";
+import { useForm, Controller } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addDiscoveryAction } from "../../../Content/action/actionTypes";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,44 +29,57 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ExploreSubmit(props) {
-  const addExplore = props.addExplore;
+export default function ExploreSubmit() {
   const classes = useStyles();
-  const history = useHistory();
+
+  const dispatch = useDispatch(); 
+ 
+  const { handleSubmit, control } = useForm();
+
+  const onSubmit = data => {
+      console.log("ExploreSubmit fire");
+      console.log(data);
+      
+      dispatch({type: addDiscoveryAction, payload: data})
+  };
+
   return (
-      <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs">
         <div className={classes.paper}>
           <Typography component="h1" variant="h4">
-            Add Explore
+            Add discovery
           </Typography>
-          <form className={classes.form} onSubmit={(e) => {
-            addExplore({
-              title: document.getElementById('explore').value,
-            })
-            e.preventDefault();
-          }} noValidate>
-            <TextField
+          <form  className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            name="title"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <TextField
+                label="Title"
                 variant="filled"
-                margin="normal"
-                required
+                value={value}
+                onChange={onChange}
+                error={!!error}
+                helperText={error ? error.message : null}
+                type="title"
                 fullWidth
-                id="explore"
-                label="Explore Name:"
-                name="explore"
-                autoFocus
-            />
-           <Button
-                type="submit"
-                margin="normal"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
+              />
+            )}
+            rules={{ required: 'Title required' }}
+          />
 
+          
+          <Button
+              type="submit"
+              margin="normal"
+              fullWidth
+              variant="contained"
+              color= "primary"            
             >
-              Submit
+              Add
             </Button>
-          </form>
+        </form>
         </div>
       </Container>
   );
