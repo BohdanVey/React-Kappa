@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useState } from "react";
-
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -13,13 +11,19 @@ import Select from "@material-ui/core/Select";
 import FormGroup from "@material-ui/core/FormGroup";
 
 import { useForm, Controller } from "react-hook-form";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 
-import { updateUserProfileAction } from "../../actions/actionTypes";
+import {
+  updateUserProfileAction,
+  getUserProfileActionThunk
+ } from "../../actions/actionTypes";
 
-// eslint-disable-next-line no-unused-vars
+
+import { updateItems } from "../../actions/actions"
+
+
+ // eslint-disable-next-line no-unused-vars
 const UserUpdate = ({ open, handleClose }) => {
   const { control, handleSubmit, getValues, errors } = useForm();
 
@@ -28,6 +32,14 @@ const UserUpdate = ({ open, handleClose }) => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
+    dispatch(updateItems);
+    let x = dispatch({
+      type: getUserProfileActionThunk,
+      // payload: values,
+    });
+
+
+
     if (!errors) {
       const values = getValues();
       values.id = props.userId;
@@ -39,8 +51,8 @@ const UserUpdate = ({ open, handleClose }) => {
 
 
     //   console.log("121212");
-      console.log("Props");
-      console.log(props);
+      // console.log("Props");
+      // console.log(props);
 
       dispatch({
           type: updateUserProfileAction,

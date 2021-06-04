@@ -1,5 +1,13 @@
-import { addUserInfoAction, updateUserProfileAction } from "../actions/actionTypes";
+import { LocalConvenienceStoreOutlined } from "@material-ui/icons";
+import {
+  addUserInfoAction,
+  updateUserProfileAction,
+  getUserProfileActionThunk,
+  updateUserProfileActionThunk,
+ } from "../actions/actionTypes";
 
+
+ // replace with json database now
 const initialState = [
     {
         userId: 1,
@@ -76,6 +84,17 @@ const initialState = [
 const userInfoReducer = (state = initialState, action) => {
   switch (action.type) {
 
+    case updateUserProfileActionThunk:
+      console.log("user update reducer");
+      return {... state, notes: [... state.notes, action.payload]}
+
+    case getUserProfileActionThunk:
+      console.log("got to REDUCER getUserProfileActionThunk");
+      return {
+        ... state,
+        loading: true
+      }
+
     case addUserInfoAction:
         return [
             ...state,
@@ -97,6 +116,7 @@ const userInfoReducer = (state = initialState, action) => {
         ];
     
     case updateUserProfileAction:
+
       console.log("action.payload")
       console.log(action.payload)
       for (let i = 0; i < state.length; i++) {

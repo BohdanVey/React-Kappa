@@ -10,7 +10,6 @@ import {
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 
-import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 import LogInView from "./views/LogInForm";
@@ -22,9 +21,9 @@ import Main from "./views/Main/Main";
 import Expedition from "./views/Expedition/Expedition";
 import Content from "./views/TestTest/";
 
-
-import rootReducer from "./rootReducer";
 import { useSelector } from "react-redux";
+
+import { store } from "./store";
 
 
 const theme = createMuiTheme({
@@ -39,7 +38,7 @@ const theme = createMuiTheme({
 });
 
       
-const store = createStore(rootReducer);
+// const store = createStore(rootReducer);
         
 const Routes = () => {
 

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Button from "@material-ui/core/Button";
 
 
 import styles from "./../styles.module.css";
-import { useSelector } from "react-redux";
 import UserUpdate from "../UserUpdate"
+import { useState, useEffect } from "react"
+import { useSelector, useDispatch} from "react-redux";
+
+import { fetchItems } from "../../actions/actions";
 
 
 const UserCard = () => {
@@ -15,9 +18,20 @@ const UserCard = () => {
   const props = useSelector((state) => state.userInfo[currUser.currUserId - 1])
 
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
+  let x = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(fetchItems())
+  }, [])
+
+  console.log("sth unknown", x);
 
   const handleClickOpen = () => {
+    console.log(x);
+
+
     setOpen(true);
   };
 
